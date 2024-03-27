@@ -19,17 +19,19 @@
 // -----------------------------------------------//
 //Method Two!
 
+const obj = {
+    title:"Notification sent to customer!"
+}
+
 function upload() {
     console.log("Uploading");
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             let isUpload = true;
             if (isUpload) {
-                console.log("Video Upload Done");
-                resolve();
+                resolve("Video Upload Done");
             } else {
-                console.log("Failed to Upload");
-                reject();
+                reject("Failed to Upload");
             }
         }, 1500);
     })
@@ -41,24 +43,24 @@ function publish() {
         setTimeout(() => {
             let isPublish = true;
             if (isPublish) {
-                console.log("Video Publish Done");
-                resolve();
+                resolve("Video Publish Done");
             } else {
-                console.log("Publish Stopped!");
-                reject();
+                reject("Publish Stopped!");
             }
         }, 1500)
     })
 }
 
-function notify(){
-    console.log("Notification Sent!");
+function notify(obj) {
+    console.log(obj.title);
 }
 
-upload().then(()=>{
+upload().then((isUpload) => {
+    console.log(isUpload);
     return publish();
-}).then(()=>{
-    return notify();
-}).catch(()=>{
-    console.log("Error Uploading & Publishing!");
+}).then((isPublish) => {
+    console.log(isPublish);
+    return notify(obj);
+}).catch((error) => {
+    console.log(error);
 })
