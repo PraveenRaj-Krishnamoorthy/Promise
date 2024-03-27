@@ -1,2 +1,3 @@
 # Promise
- Promise(then&catch)
+ Promise(then&catch)<br>
+ Promise all data updated..
